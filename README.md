@@ -21,7 +21,7 @@ python val.py --name archs
 
 Check out below for some visualizations of our model outputs.
 
-## Image Desnowing
+## CHASEDB1 Medical Image Segmentation
 
 <table border='0' cellspacing='0' cellpadding='0'>
   <tr>
