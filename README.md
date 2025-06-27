@@ -6,22 +6,40 @@ This is the code repository of the following [paper](https://arxiv.org/pdf/2207.
 Journal Name, 2025.\
 url
 
-## Datasets
+## Dataset
 
-We perform experiments for image desnowing on Snow100K, combined image deraining and dehazing on Outdoor-Rain, and raindrop removal on the RainDrop datasets. To train multi-weather restoration, we used the AllWeather training set from TransWeather, which is composed of subsets of training images from these three benchmarks.
-
-A public retinal vessel reference dataset CHASE_DB1 made available by Kingston University, London in collaboration with St. George’s, University of London. This is a subset of retinal images of multi-ethnic children from the Child Heart and Health Study in England (CHASE) dataset. This subset contains 28 retinal images captured from both eyes from 14 of the children recruited in the study. In this subset each retinal image is also accompanied by two ground truth images. This is provided in the form of two manual vessel segmentations made by two independent human observers for each of the images, in which each pixel is assigned a "1" label if it is part of a blood vessel and a "0" label otherwise. Making this subset publicly available allows for the scientific community to train and test computer vision algorithms (specifically vessel segmentation methodologies). Most importantly this subset allows for performance comparisons - several algorithms being evaluated on the same database allows for direct comparisons of their performances to be made.
+We perform experiments on a public rentinal vessel reference dataset [CHASEDB1](https://researchdata.kingston.ac.uk/96/), which is made available by Kingston Univesity, London in collaboration with St. George's University of London. The downloaded dataset is shown in the following form:
 
 
+    |--inputs
+        |--images
+            |--Image_01L.jpg
+            |--Image_01R.jpg
+            |--...
+        |--masks
+            |--0
+                |--Image_01L_1stHO.png
+                |--Image_01R_1stHO.png
+                |--...
 
-We perform experiments on a public rentinal vessel reference dataset [CHASEDB1](https://researchdata.kingston.ac.uk/96/), which is made available by Kingston Univesity, London in collaboration with St. George's University of London. 
 
 ## Saved Model Weights
 
-We share a pre-trained CHASEDB1 medical image segmentation model ...(link) with the network configuration in `models/archs/config.yml`. To evaluate ...(model name) using the pre-trained model checkpoint with the current version of the repository:
+We share a pre-trained CHASEDB1 medical image segmentation model ...(link) with the network configuration in the following form:
+
+    |--models
+      |--archs
+        |--config.yml
+      |--Rolling_Unet
+        |--config.yml
+      ...
+
+To evaluate ...(model name) using the pre-trained model checkpoint with the current version of the repository:
 ```bash
 python val.py --name archs
 ```
+
+
 
 Check out below for some visualizations of our model outputs.
 
@@ -90,7 +108,6 @@ Authors of this work are affiliated with Graz University of Technology, Institut
 Parts of this code repository is based on the following works:
 
 * https://github.com/IGITUGraz/WeatherDiffusion
+* https://github.com/ZhangJC-2k/DPU
+* 
 
-* https://github.com/ermongroup/ddim
-* https://github.com/bahjat-kawar/ddrm
-* https://github.com/JingyunLiang/SwinIR
