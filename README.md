@@ -6,7 +6,16 @@ This is the code repository of the following [paper](https://arxiv.org/pdf/2207.
 Journal Name, 2025.\
 url
 
-## Dataset
+## Create Environment
+
+* pandas==1.5.3
+* scikit-learn==1.2.2
+* numpy==1.23.5
+* matplotlib==3.7.0
+* torch==2.0.0
+* reformer-pytorch==1.4.4
+
+## Prepare Dataset
 
 We perform experiments on a public rentinal vessel reference dataset [CHASEDB1](https://researchdata.kingston.ac.uk/96/), which is made available by Kingston Univesity, London in collaboration with St. George's University of London. The downloaded dataset is shown in the following form:
 
@@ -21,6 +30,16 @@ We perform experiments on a public rentinal vessel reference dataset [CHASEDB1](
                 |--Image_01L_1stHO.png
                 |--Image_01R_1stHO.png
                 |--...
+
+## Simulation Experiment
+
+```bash
+# archs
+python train.py  --name archs --arch archs --epochs 4000
+
+```
+
+
 
 
 ## Saved Model Weights
