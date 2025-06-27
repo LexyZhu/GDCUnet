@@ -6,11 +6,15 @@ This is the code repository of the following [paper](https://arxiv.org/pdf/2207.
 Journal Name, 2025.\
 url
 
-
-
 ## Datasets
 
-We perform experiments for medical image segmentation on ...(dataset link) dataset. 
+We perform experiments for image desnowing on Snow100K, combined image deraining and dehazing on Outdoor-Rain, and raindrop removal on the RainDrop datasets. To train multi-weather restoration, we used the AllWeather training set from TransWeather, which is composed of subsets of training images from these three benchmarks.
+
+A public retinal vessel reference dataset CHASE_DB1 made available by Kingston University, London in collaboration with St. George’s, University of London. This is a subset of retinal images of multi-ethnic children from the Child Heart and Health Study in England (CHASE) dataset. This subset contains 28 retinal images captured from both eyes from 14 of the children recruited in the study. In this subset each retinal image is also accompanied by two ground truth images. This is provided in the form of two manual vessel segmentations made by two independent human observers for each of the images, in which each pixel is assigned a "1" label if it is part of a blood vessel and a "0" label otherwise. Making this subset publicly available allows for the scientific community to train and test computer vision algorithms (specifically vessel segmentation methodologies). Most importantly this subset allows for performance comparisons - several algorithms being evaluated on the same database allows for direct comparisons of their performances to be made.
+
+
+
+We perform experiments on a public rentinal vessel reference dataset [CHASEDB1](https://researchdata.kingston.ac.uk/96/), which is made available by Kingston Univesity, London in collaboration with St. George's University of London. 
 
 ## Saved Model Weights
 
@@ -25,6 +29,7 @@ Check out below for some visualizations of our model outputs.
 
 <table border='0' cellspacing='0' cellpadding='0'>
   <tr>
+    <td align="center"><b>Images</td>
     <td align="center"><b>Ground Truth</td>
     <td align="center"><b>Archs</td>
     <td align="center"><b>Rolling UNet</td>
@@ -32,6 +37,8 @@ Check out below for some visualizations of our model outputs.
     <td align="center"><b>UNet++</td>
     
   <tr>
+    <td><img width='180', alt="06R" src="https://github.com/user-attachments/assets/60cf13f1-e313-4055-a385-db2a8257a275">
+  </td>
     <td> <img width="180" alt="Ground Truth" src="https://github.com/user-attachments/assets/0a2cc6c4-cbcb-4731-ae06-a6ed3f3a985c"> 
   </td>
     <td> <img width="180" alt="Archs" src="https://github.com/user-attachments/assets/18672231-896c-4f05-a6a4-7b6cf84f9c97"> 
@@ -45,6 +52,8 @@ Check out below for some visualizations of our model outputs.
  </td>
   <tr>
   <tr>
+    <td> <img width="180" alt="08R" src="https://github.com/user-attachments/assets/83996a56-5962-4feb-a61b-dd486fcd5064">
+  </td>
     <td> <img width="180" alt="Ground Truth" src="https://github.com/user-attachments/assets/018e6393-f824-4159-9fb1-9fd88c738cbb">
   </td>
     <td> <img width="180" alt="Archs" src="https://github.com/user-attachments/assets/bdd3489c-1ec4-40af-b0ce-5dbb605d4ba7">
