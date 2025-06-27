@@ -37,6 +37,12 @@ We perform experiments on a public rentinal vessel reference dataset [CHASEDB1](
 # archs
 python train.py  --name archs --arch archs --epochs 4000
 
+# Rolling Unet
+python train.py --name Rolling_Unet --arch Rolling_Unet_S
+
+# Attention Unet
+python train.py --nae Attention_Unet --arch Attention_Unet
+
 ```
 
 
