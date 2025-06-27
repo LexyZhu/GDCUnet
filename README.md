@@ -28,11 +28,11 @@ We perform experiments on a public rentinal vessel reference dataset [CHASEDB1](
 We share a pre-trained CHASEDB1 medical image segmentation model ...(link) with the network configuration in the following form:
 
     |--models
-      |--archs
-        |--config.yml
-      |--Rolling_Unet
-        |--config.yml
-      ...
+        |--archs
+            |--config.yml
+        |--Rolling_Unet
+            |--config.yml
+        |--...
 
 To evaluate ...(model name) using the pre-trained model checkpoint with the current version of the repository:
 ```bash
