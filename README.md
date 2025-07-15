@@ -1,10 +1,33 @@
-# Image Segmentation
+# GDCUnet
 
 This is the code repository of the following [paper](https://arxiv.org/pdf/2207.14626.pdf) to conduct a segmentation task under a biomecical circumstances.
 "paper title"\
 <em>Name</em>\
 Journal Name, 2025.\
 url
+
+## Abstract
+Deformable convolution can adaptively change the shape of convolution kernel by
+learning offsets to deal with complex shape features. We propose a novel plug-and-
+play deformable convolutional module that uses attention and feedforward networks
+to learn offsets, so that the deformable patterns can capture long-distance global fea-
+tures. Compared with previously existing deformable convolutions, the proposed mod-
+ule learns the sub-pixel displacement field and adaptively warps the feature maps across
+all channels (rather than directly deforms the convolution kernel), which is equiva-
+lent to a relative deformation of the kernel’s sampling grids, achieving global fea-
+ture deformation and the decoupling of (kernel size)–(learning network). Consider-
+ing that the fundus blood vessels have globally self-similar complex edges, we de-
+sign a deep learning model for fundus blood vessel segmentation, GDCUnet, based
+on the proposed convolutional module. Empirical evaluations under the same config-
+uration and unified framework show that GDCUnet has achieved state-of-the-art per-
+formance on public datasets. Further ablation experiments demonstrated that the pro-
+posed deformable convolutional module could more significantly learn the complex
+features of fundus blood vessels, enhancing the model’s representation and general-
+ization capabilities. The proposed module is similar to the interface of conventional
+convolution, we suggest applying it to more machine vision tasks with complex global
+self-similar features.
+
+
 
 ## Create Environment
 
