@@ -16,7 +16,7 @@ from sklearn.model_selection import train_test_split
 from torch.optim import lr_scheduler
 from tqdm import tqdm
 from albumentations import RandomRotate90, Resize
-from Archs import Attention_Unet, ResUnet, Rolling_Unet, UctransUnet, Unet, UnetPP, Unext, archs, archs_emb2_dpt1_dim64
+from Archs import Attention_Unet, ResUnet, Rolling_Unet, UctransUnet, Unet, UnetPP, Unext, GDCUnet
 import losses
 from dataset import Dataset
 from metrics import iou_score
@@ -37,8 +37,7 @@ MODEL_MAP = {
     'Unet': Unet,
     'UnetPP': UnetPP,
     'Unext': Unext,
-    'Archs1': archs,
-    'Archs2': archs_emb2_dpt1_dim64
+    'GDCUnet': GDCUnet,
 }
 
 def parse_args():
