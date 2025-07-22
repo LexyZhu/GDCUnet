@@ -10,7 +10,7 @@ import numpy
 from einops import rearrange
 import torchvision.models as models
 from torch.nn.modules.utils import _pair
-__all__ = ['Rolling_Unet_S']
+__all__ = ['GDCUnet']
 
 
 class Residual(nn.Module):
@@ -292,7 +292,7 @@ class Deform_D_DoubleConv(nn.Module):
         return self.conv(input)
 
 
-class Rolling_Unet_S(nn.Module):
+class GDCUnet(nn.Module):
     def __init__(self, num_classes, input_channels=3, deep_supervision=False, img_size=224,
                  embed_dims=[16, 32, 64, 128, 256],
                  num_heads=[1, 2, 4, 8], qkv_bias=False, qk_scale=None, drop_rate=0., attn_drop_rate=0.,
