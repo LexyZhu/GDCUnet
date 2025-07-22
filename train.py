@@ -90,9 +90,6 @@ def parse_args():
 
     return config
 
-# ARCH_NAMES = config['name'].__all__
-
-
 
 def train(config, train_loader, model, criterion, optimizer):
     avg_meters = {'loss': AverageMeter(),
