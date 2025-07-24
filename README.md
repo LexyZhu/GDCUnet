@@ -58,7 +58,7 @@ We perform experiments on a public rentinal vessel reference dataset [CHASEDB1](
 
 ```bash
 # archs
-python train.py  --name archs --arch archs --epochs 4000
+python train.py  --name GDCUnet --arch GDCUnet --epochs 4000
 
 # Rolling Unet
 python train.py --name Rolling_Unet --arch Rolling_Unet_S
@@ -76,7 +76,7 @@ python train.py --nae Attention_Unet --arch Attention_Unet
 We share a pre-trained CHASEDB1 medical image segmentation model ...(link) with the network configuration in the following form:
 
     |--models
-        |--archs
+        |--GDCUnet
             |--config.yml
         |--Rolling_Unet
             |--config.yml
