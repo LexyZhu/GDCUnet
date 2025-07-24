@@ -64,9 +64,10 @@ We share a pre-trained CHASEDB1 medical image segmentation model ...(link) with 
             |--config.yml
         |--...
 
-To evaluate ...(model name) using the pre-trained model checkpoint with the current version of the repository:
+To evaluate GDCUnet using the pre-trained model weights with the current version of the repository:
+
 ```bash
-python val.py --name archs
+python val.py --name GDCUnet
 ```
 
 
