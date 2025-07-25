@@ -186,7 +186,7 @@ China under Grant 2024GH-ZDA-GJ-Y-09.
 
 Parts of this code repository is based on the following works:
 
-* [https://github.com/IGITUGraz/WeatherDiffusion](https://github.com/jeya-maria-jose/UNeXt-pytorch)
-* [https://github.com/ZhangJC-2k/DPU](https://github.com/Jiaoyang45/Rolling-Unet)
+* https://github.com/jeya-maria-jose/UNeXt-pytorch 
+* https://github.com/Jiaoyang45/Rolling-Unet
 
 
