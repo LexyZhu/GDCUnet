@@ -3,7 +3,7 @@
 This is the code repository of the following [paper](https://arxiv.org/abs/2507.18354) to conduct a segmentation task under a biomecical circumstances.
 "Deformable Convolution Module with Globally Learned Relative Offsets for Fundus Vessel Segmentation"\
 <em>Lexuan Zhu, Yuxuan Li, Yuning Ren</em>\
-Journal Name, 2025.\
+2025.\
 https://arxiv.org/abs/2507.18354
 
 
@@ -24,8 +24,7 @@ Deformable convolution can adaptively change the shape of convolution kernel by 
 
 ## Prepare Dataset
 
-We perform experiments on a public rentinal vessel reference dataset [CHASEDB1](https://researchdata.kingston.ac.uk/96/), which is made available by Kingston Univesity, London in collaboration with St. George's University of London. The downloaded dataset is shown in the following form:
-
+We perform experiments on a public rentinal vessel reference dataset [CHASEDB1](https://researchdata.kingston.ac.uk/96/), which is made available by Kingston Univesity, London in collaboration with St. George's University of London. The dataset is shown in the following form:
 
     |--inputs
         |--images
@@ -38,7 +37,7 @@ We perform experiments on a public rentinal vessel reference dataset [CHASEDB1](
                 |--Image_01R_1stHO.png
                 |--...
 
-## Simulation Experiment
+## Experiments
 
 ```bash
 # archs
@@ -106,18 +105,18 @@ Check out below for some visualizations of our model outputs.
 
 
   <tr>
-    <td> <img width="180" height="180" alt="08R" src="https://github.com/user-attachments/assets/83996a56-5962-4feb-a61b-dd486fcd5064">
+    <td> <img width="180" height="180" alt="images" src="https://github.com/user-attachments/assets/81970617-c6d0-45e2-b299-244b7ddac692">
   </td>
-    <td> <img width="180" height="180" alt="Ground Truth" src="https://github.com/user-attachments/assets/018e6393-f824-4159-9fb1-9fd88c738cbb">
+    <td> <img width="180" height="180" alt="Ground Truth" src="https://github.com/user-attachments/assets/599b0699-d409-40aa-80a7-fc669baa9500">
   </td>
     <td> <img width="180" height="180" alt="GDCUnet Setting 3" src="https://github.com/user-attachments/assets/bd940568-ecf7-4c1e-996e-53979acbf178">
   </td>
     <td> <img width="180" height="180" alt="GDCUnet Setting 5" src="https://github.com/user-attachments/assets/ecde4be0-c42c-4dea-b0c5-992b6bb4bfe8">
   </td>
-    <td> <img width="180" height="180" alt="Rolling UNet" src="https://github.com/user-attachments/assets/817d6767-82a4-44ef-aafa-a1980c6029d6">
+    <td> <img width="180" height="180" alt="Rolling UNet" src="https://github.com/user-attachments/assets/85603e57-3344-43ce-818a-b8960982949b">
     
   </td>
-    <td> <img width="180" height="180" alt="UNet" src="https://github.com/user-attachments/assets/438c129f-c169-42b7-aac4-789d5ea5667a" >
+    <td> <img width="180" height="180" alt="UNet" src="https://github.com/user-attachments/assets/ca879939-25bc-4863-8933-f8bb75a70c78" >
 
   </td>
     
@@ -145,9 +144,10 @@ Check out below for some visualizations of our model outputs.
 </td>
     <td><img width="180" height="180" alt="DSCNet" src="https://github.com/user-attachments/assets/8e4f6171-b399-41da-a6a5-47f4e9b31337">
 </td>
+    
 
 <tr>
-    <td> <img width="180" height="180" alt="UNet++" src="https://github.com/user-attachments/assets/ef8ac8c1-f9b1-4213-ab4e-8f2422769f9c" >
+    <td> <img width="180" height="180" alt="UNet++" src="https://github.com/user-attachments/assets/115eaaa7-b4c2-4683-9e9c-15e41e62f27d" >
  </td>
     <td> <img width="180" height="180" alt="Att-Unet" src="https://github.com/user-attachments/assets/6a2040a0-2bcc-4196-b948-b86852b4b50f"> 
  </td>
@@ -168,23 +168,25 @@ Check out below for some visualizations of our model outputs.
 ## Reference
 If you use this code or models in your research and find it helpful, please cite the following paper:
 ```
-@article{ozdenizci2023,
-  title={Restoring vision in adverse weather conditions with patch-based denoising diffusion models},
-  author={Ozan \"{O}zdenizci and Robert Legenstein},
-  journal={IEEE Transactions on Pattern Analysis and Machine Intelligence}, 
-  pages={1-12},
-  year={2023},
-  doi={10.1109/TPAMI.2023.3238179}
+@misc{zhu2025deformableconvolutionmoduleglobally,
+      title={Deformable Convolution Module with Globally Learned Relative Offsets for Fundus Vessel Segmentation}, 
+      author={Lexuan Zhu and Yuxuan Li and Yuning Ren},
+      year={2025},
+      eprint={2507.18354},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2507.18354}, 
 }
 ```
 
 ## Acknowledgments
 
-Authors of this work are affiliated with Graz University of Technology, Institute of Theoretical Computer Science, and Silicon Austria Labs, TU Graz - SAL Dependable Embedded Systems Lab, Graz, Austria. This work has been supported by the "University SAL Labs" initiative of Silicon Austria Labs (SAL) and its Austrian partner universities for applied fundamental research for electronic based systems.
+This work was supported by the Ministry of Education of the People’s Republic of
+China under Grant 2024GH-ZDA-GJ-Y-09.
 
 Parts of this code repository is based on the following works:
 
 * https://github.com/IGITUGraz/WeatherDiffusion
 * https://github.com/ZhangJC-2k/DPU
-* 
+
 
