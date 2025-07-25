@@ -24,7 +24,7 @@ Deformable convolution can adaptively change the shape of convolution kernel by 
 
 ## Prepare Dataset
 
-We perform experiments on a public rentinal vessel reference dataset [CHASEDB1](https://researchdata.kingston.ac.uk/96/), which is made available by Kingston Univesity, London in collaboration with St. George's University of London. The dataset is shown in the following form:
+We perform experiments on a public rentinal vessel reference dataset [CHASEDB1](https://researchdata.kingston.ac.uk/96/), the dataset directory should look like this:
 
     |--inputs
         |--images
