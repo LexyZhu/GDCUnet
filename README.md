@@ -39,31 +39,19 @@ We perform experiments on a public rentinal vessel reference dataset [CHASEDB1](
 
 ## Experiments
 
+To perform the experiments, the following example codes can be used.
+
 ```bash
 # archs
 python train.py  --name GDCUnet --arch GDCUnet --epochs 4000
 
 # Rolling Unet
-python train.py --name Rolling_Unet --arch Rolling_Unet_S
+python train.py --name Rolling_Unet --arch Rolling_Unet_S 
 
 # Attention Unet
-python train.py --nae Attention_Unet --arch Attention_Unet
+python train.py --name Attention_Unet --arch Attention_Unet
 
 ```
-
-
-
-
-## Saved Model Weights
-
-We share a pre-trained CHASEDB1 medical image segmentation model ...(link) with the network configuration in the following form:
-
-    |--models
-        |--GDCUnet
-            |--config.yml
-        |--Rolling_Unet
-            |--config.yml
-        |--...
 
 To evaluate GDCUnet using the pre-trained model weights with the current version of the repository:
 
