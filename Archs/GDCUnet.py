@@ -1,6 +1,5 @@
 import torch
 import torch.nn.functional as F
-##
 from utils import *
 
 from timm.models.layers import DropPath, to_2tuple, trunc_normal_
@@ -69,13 +68,6 @@ class Attention(nn.Module):
 
         dots = torch.einsum('bhid,bhjd->bhij', q, k) * self.scale
 
-        if mask is not None:
-            mask = F.pad(mask.flatten(1), (1, 0), value=True)
-            assert mask.shape[-1] == dots.shape[-1], 'mask尺寸不匹配'
-            mask = mask[:, None, :] * mask[:, :, None]
-            dots.masked_fill_(~mask, float('-inf'))
-            del mask
-
         attn = dots.softmax(dim=-1)
         out = torch.einsum('bhij,bhjd->bhid', attn, v)
         out = rearrange(out, 'b h n d -> b n (h d)')
@@ -83,8 +75,8 @@ class Attention(nn.Module):
      
         return out
 
-class Transformer(nn.Module):
-    def __init__(self, dim, depth, heads, mlp_dim, group=1, dropout=0.5):
+class Offset_net(nn.Module):
+    def __init__(self, dim, depth, heads, mlp_dim, group=1, dropout=0.0):
         super().__init__()
         self.layers = nn.ModuleList([])
         self.embedding_in = nn.Linear(dim, dim*2, bias=False)
@@ -112,9 +104,9 @@ class Transformer(nn.Module):
         return x
 
 
-class DeformConv2d(nn.Conv2d):
+class SAFDConv(nn.Conv2d):
     def __init__(self, in_channels, out_channels, kernel_size=3, stride=1, padding=0, dilation=1, groups=1, bias=True):
-        super(DeformConv2d, self).__init__(
+        super(SAFDConv, self).__init__(
             in_channels, out_channels, kernel_size, stride, padding, dilation, groups, bias
         )
         self.kernel_size = _pair(kernel_size)
@@ -123,7 +115,7 @@ class DeformConv2d(nn.Conv2d):
         self.dilation = _pair(dilation)
 
         # Offset transformer layer
-        self.offset_transformer = Transformer(in_channels, 1, 4, 64)
+        self.offset_transformer = Offset_net(in_channels, 1, 4, 64)
 
         self._initialize_weights()
 
@@ -261,14 +253,14 @@ class D_DoubleConv(nn.Module):
     def forward(self, input):
         return self.conv(input)
 
-class Deform_DoubleConv(nn.Module):
+class SAFD_DoubleConv(nn.Module):
     def __init__(self, in_ch, out_ch):
-        super(Deform_DoubleConv, self).__init__()
+        super(SAFD_DoubleConv, self).__init__()
         self.conv = nn.Sequential(
-            DeformConv2d(in_ch, out_ch, 5, padding=2),
+            SAFDConv(in_ch, out_ch, 5, padding=2),
             nn.BatchNorm2d(out_ch),
             nn.ReLU(inplace=True),
-            DeformConv2d(out_ch, out_ch, 5, padding=2),
+            SAFDConv(out_ch, out_ch, 5, padding=2),
             nn.BatchNorm2d(out_ch),
             nn.ReLU(inplace=True)
         )
@@ -276,14 +268,14 @@ class Deform_DoubleConv(nn.Module):
     def forward(self, input):
         return self.conv(input)
     
-class Deform_D_DoubleConv(nn.Module):
+class SAFD_D_DoubleConv(nn.Module):
     def __init__(self, in_ch, out_ch):
-        super(Deform_D_DoubleConv, self).__init__()
+        super(SAFD_D_DoubleConv, self).__init__()
         self.conv = nn.Sequential(
-            DeformConv2d(in_ch, in_ch, 5, padding=2),
+            SAFDConv(in_ch, in_ch, 5, padding=2),
             nn.BatchNorm2d(in_ch),
             nn.ReLU(inplace=True),
-            DeformConv2d(in_ch, out_ch, 5, padding=2),
+            SAFDConv(in_ch, out_ch, 5, padding=2),
             nn.BatchNorm2d(out_ch),
             nn.ReLU(inplace=True)
         )
@@ -292,7 +284,7 @@ class Deform_D_DoubleConv(nn.Module):
         return self.conv(input)
 
 
-class GDCUnet(nn.Module):
+class  GDCUnet(nn.Module):
     def __init__(self, num_classes, input_channels=3, deep_supervision=False, img_size=224,
                  embed_dims=[16, 32, 64, 128, 256],
                  num_heads=[1, 2, 4, 8], qkv_bias=False, qk_scale=None, drop_rate=0., attn_drop_rate=0.,
@@ -303,7 +295,7 @@ class GDCUnet(nn.Module):
         self.pool1 = nn.MaxPool2d(2)
         self.conv2 = DoubleConv(embed_dims[0], embed_dims[1])
         self.pool2 = nn.MaxPool2d(2)
-        self.conv3 = Deform_DoubleConv(embed_dims[1], embed_dims[2])
+        self.conv3 = SAFD_DoubleConv(embed_dims[1], embed_dims[2])
         self.pool3 = nn.MaxPool2d(2)
 
         self.pool4 = nn.MaxPool2d(2)
@@ -325,7 +317,7 @@ class GDCUnet(nn.Module):
         self.FIBlock4 = nn.Conv2d(embed_dims[3], embed_dims[2], 3, stride=1, padding=1)
         self.dbn4 = nn.BatchNorm2d(embed_dims[2])
 
-        self.decoder3 = Deform_D_DoubleConv(embed_dims[2], embed_dims[1])
+        self.decoder3 = SAFD_D_DoubleConv(embed_dims[2], embed_dims[1])
         self.decoder2 = D_DoubleConv(embed_dims[1], embed_dims[0])
         self.decoder1 = D_DoubleConv(embed_dims[0], 8)
 
